@@ -1,18 +1,19 @@
+<!--postare noua-->
+
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/postarestyle.css' />
   </head>
   <body>
       <form action = /postare method="POST">
         <label for = "titlu">Titlu:</label><br>  
-        <input type = "text" id = "titlu"><br>
+        <input type = "text" name = "titlu" id = "titlu"><br>
         <label for = "descriere">Descriere:</label><br>
-        <input type = "text" id = "descriere"><br>
+        <input type = "text" name = "descriere" id = "descriere"><br>
         <label for = "autor">Autor:</label><br>
-        <input type = "text" id = "autor"><br><br>
-        <button type = "submit"></button>
+        <input type = "text" name = "autor" id = "autor"><br><br>
+        <button type = "submit" id = "trimite">Trimite</button>
       </form>
   </body>
 </html>
