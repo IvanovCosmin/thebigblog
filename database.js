@@ -8,7 +8,7 @@ const DBObject = {
         schema: undefined,
         model: undefined
     },
-
+    
     _getPostareSchema: function () {
         if(this._postareInternals.schema === undefined) {
             this._postareInternals.schema = new mongoose.Schema({ titlu: 'string', continut: 'string', autor: 'string' });
@@ -25,6 +25,7 @@ const DBObject = {
     }
     
 }
+
 
 
 module.exports = DBObject;

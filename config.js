@@ -1,4 +1,4 @@
-var CONNECTION_STRING ='mongodb+srv://admin:admin@cluster0.okcbn.gcp.mongodb.net/<dbname>?retryWrites=true&w=majority';
+var CONNECTION_STRING ='<connection string>';
 module.exports = {
     CONNECTION_STRING : CONNECTION_STRING
 }
