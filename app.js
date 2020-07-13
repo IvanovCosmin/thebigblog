@@ -1,12 +1,14 @@
+
 let createError = require('http-errors');
 let express = require('express');
 let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
+let mongoose =require('mongoose');
 let bodyParser = require('body-parser');
-
 let indexRouter = require('./routes/index');
 let postareRouter = require('./routes/postare');
+let config = require('./config');
 
 
 let app = express();
@@ -34,6 +36,9 @@ app.use(function(req, res, next) {
   next(createError(404));
 });
 
+
+//db
+mongoose.connect(config.CONNECTION_STRING) ;
 
 // error handler
 app.use(function(err, req, res, next) {
