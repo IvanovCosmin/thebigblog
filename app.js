@@ -5,10 +5,12 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
-let indexRouter = require('./routes/index');
-let postareRouter = require('./routes/postare');
 
 
+let homepageRouter = require('./routes/homepage');
+let loginRouter = require('./routes/login');
+let postariRouter = require('./routes/postari');
+let utilizatoriRouter = require('./routes/utilizatori');
 
 let app = express();
 
@@ -22,8 +24,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/', indexRouter);
-app.use('/postare', postareRouter);
+app.use('/', homepageRouter);
+app.use('/login', loginRouter);
+app.use('/postari', postariRouter);
+app.use('/utilizatori', utilizatoriRouter);
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({

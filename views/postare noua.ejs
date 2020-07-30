@@ -1,0 +1,21 @@
+<!--postare noua-->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel='stylesheet' href='/stylesheets/postarestyle.css' />
+  </head>
+  <body>
+      <form action = "/utilizatori/<%=numeUtilizator%>/postarenoua" method = "POST">      
+        <label for = "titlu">Titlu:</label><br>
+        <input type = "text" name = "titlu" placeholder = "Titlu..." id = "titlu"><br>
+        <label for = "continut">continut:</label><br>
+        <input type = "text" name = "continut" placeholder = "Continut..." id = "Continut"><br>
+        <label for = "autori">Autor:</label><br>
+        <input type = "text" name = "autori" placeholder = "Autori..." id = "autori"><br>
+        <label for = "tags">Tag-uri:</label><br>
+        <input type = "text" name = "tags" placeholder = "Tags..." id = "tags"><br><br>
+        <button type = "submit" id = "trimite">Trimite</button>
+      </form>
+  </body>
+</html>
