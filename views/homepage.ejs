@@ -14,13 +14,13 @@
     <link rel='stylesheet' href='/stylesheets/indexstyle.css' />
     <label for = "cautaDupa">cauta dupa</label>
     <form action = / method = "POST">
-      <select name = "cautareDupa" id ="cautaDupa">
+      <select name = "cautareDupa" id = "cautaDupa">
         <option value = "titlu">titlu</option>
         <option value = "continut">continut</option>
         <option value = "autor">autor</option>
         <option value =  "tag" >tag</option>
       </select>
-      <input type = "text" name = "cautare" placeholder="cauta....">
+      <input type = "text" name = "cautare" placeholder = "cauta....">
       <button type = "submit">cauta</button>
     </form>
     <br>
@@ -28,6 +28,15 @@
     <br>
     <br>
     <br>
-    <a href= "/login">login</a>
+    <% if(logat) { %>
+    <form action = "/logout" method = "POST">
+      <button type = "submit">logout</button>
+    </form>
+    <% } %>
+    <% if(!logat) { %>
+    <form action = "/login" method = "GET">
+      <button type = "submit">login</button>
+    </form>
+    <% } %>
   </body>
 </html>

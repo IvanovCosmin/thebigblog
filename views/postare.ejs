@@ -7,17 +7,21 @@
   <body>
     <form action = "/postari/<%=titluPostare%>/editeaza" method = "POST">
     <label for =  "titlu">titlu:</label>
-    <textarea id = "titlu" name = "titlu"><%=titlu%></textarea>
+    <textarea id = "titlu" name = "titlu" readonly = "!<%=autor%>"><%=titlu%></textarea>
     <label for = "continut">continut:</label>
-    <textarea id = "continut" name = "continut"><%=continut%></textarea>
+    <textarea id = "continut" name = "continut" readonly = "!<%=autor%>"><%=continut%></textarea>
     <label for = "autori">autori:</label>
-    <textarea id = "autori" name = "autori"><%=autori%></textarea>
+    <textarea id = "autori" name = "autori" readonly = "!<%=autor%>"><%=autori%></textarea>
     <label for = "tags">tag-uri:</label>
-    <textarea id = "tags" name = "tags"><%=tags%></textarea>
-    <button type = "submit">aplica modificarile</button>
+    <textarea id = "tags" name = "tags" readonly = "!<%=autor%>"><%=tags%></textarea>
+    <% if(autor) { %>
+      <button type = "submit">aplica modificarile</button>
+    <% } %>
     </form>
     <form action = "/postari/<%=titluPostare%>/sterge" method = "POST">
+      <% if(autor) { %>
       <button type = "submit">sterge postarea</button>
+      <% } %>
     </form>
   </body>
 </html>

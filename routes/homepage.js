@@ -6,13 +6,18 @@ const DB = require('../database');
 
 let bazaDeDate;
 
-//tot db
 DB.getPostareModel().find({}, function (err, postari) {
   bazaDeDate = postari;
 });
 
 router.get('/', function(req, res, next) {
-  res.render('homepage', {postari: bazaDeDate});
+  let numeUtilizator = req.session.numeUtilizator;
+  let logat;
+  if(numeUtilizator)
+    logat = true;
+  else
+    logat = false;
+  res.render('homepage', {postari: bazaDeDate, logat: logat});
 });
 
 //cautare
@@ -36,7 +41,11 @@ router.post('/', function(req, res, next){
         DB.getPostareModel().find({tags: cautare}, function (err, bazaDeDateFiltrata) {console.log(bazaDeDateFiltrata)});
   }
   }
-
 });
 
+router.post('/logout', function(req, res, next){
+  req.session.destroy(function(err){});
+  res.clearCookie("sid");
+  res.redirect('/login');
+})
 module.exports = router;

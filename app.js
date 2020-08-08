@@ -5,7 +5,11 @@ let path = require('path');
 let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
+let session = require('express-session');
 
+let config = require('./config');
+
+let secret = config.secret;
 
 let homepageRouter = require('./routes/homepage');
 let loginRouter = require('./routes/login');
@@ -17,6 +21,8 @@ let app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
+app.use(session({name:"sid", resave: false, saveUninitialized: false, secret: secret, cookie: {maxAge: 1000 * 60 * 60 *2, sameSite: true, secure: false}}))
 
 app.use(logger('dev'));
 app.use(express.json());
