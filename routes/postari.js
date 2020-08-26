@@ -1,5 +1,3 @@
-//postari
-
 let express = require('express');
 let router = express.Router();
 const DB = require('../database');
@@ -29,24 +27,17 @@ router.get('/:titluPostare', function(req, res, next) {
 router.post('/:titluPostare/editeaza', function(req, res, next) {
   let titluPostare = req.params.titluPostare;
   DB.getPostareModel().find({titlu: titluPostare}, function(err, postare){
-    if(postare.length === 0)
-      res.sendStatus(404);
-    else{
-      let titlu = req.body.titlu;
-      let continut = req.body.continut;
-      let autori = req.body.autori.split(" ");
-      let tags = req.body.tags.split(" ");
-      DB.getPostareModel().findOneAndUpdate({titlu: titluPostare}, {titlu: titlu, continut: continut, autori: autori, tags: tags}, {new: true}, function(err, postareNoua){}); 
+    let titlu = req.body.titlu;
+    let continut = req.body.continut;
+    let autori = req.body.autori.split(" ");
+    let tags = req.body.tags.split(" ");
+    DB.getPostareModel().findOneAndUpdate({titlu: titluPostare}, {titlu: titlu, continut: continut, autori: autori, tags: tags}, {new: true}, function(err, postareNoua){}); 
     } 
-  });
+  );
 });
 
 router.post('/:titluPostare/sterge', function(req, res, next){
   let titluPostare = req.params.titluPostare;
-  DB.getPostareModel().find({titlu: titluPostare}, function(err, postare){
-    if(postare.length === 0)
-      res.sendStatus(404);
-  });
   DB.getPostareModel().findOneAndDelete({titlu: titluPostare}, function(err, postareStearsa){});  
 });
 

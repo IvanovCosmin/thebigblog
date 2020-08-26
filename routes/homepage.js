@@ -1,23 +1,20 @@
-//homepage
-
 let express = require('express');
 let router = express.Router();
 const DB = require('../database');
 
-let bazaDeDate;
 
-DB.getPostareModel().find({}, function (err, postari) {
-  bazaDeDate = postari;
-});
-
-router.get('/', function(req, res, next) {
-  let numeUtilizator = req.session.numeUtilizator;
-  let logat;
-  if(numeUtilizator)
-    logat = true;
-  else
-    logat = false;
-  res.render('homepage', {postari: bazaDeDate, logat: logat});
+router.get('/', function(req, res, next){
+  let bazaDeDate;
+  DB.getPostareModel().find({}, function (err, postari) {
+    bazaDeDate = postari;
+    let numeUtilizator = req.session.numeUtilizator;
+    let logat;
+    if(numeUtilizator)
+      logat = true;
+    else
+      logat = false;
+    res.render('homepage', {postari: bazaDeDate, logat: logat});
+  });
 });
 
 //cautare

@@ -1,5 +1,3 @@
-<!--postare--> 
-
 <!DOCTYPE html>
 <html>
   <head> 
@@ -7,13 +5,13 @@
   <body>
     <form action = "/postari/<%=titluPostare%>/editeaza" method = "POST">
     <label for =  "titlu">titlu:</label>
-    <textarea id = "titlu" name = "titlu" readonly = "!<%=autor%>"><%=titlu%></textarea>
+    <textarea id = "titlu" name = "titlu" ><%=titlu%></textarea>
     <label for = "continut">continut:</label>
-    <textarea id = "continut" name = "continut" readonly = "!<%=autor%>"><%=continut%></textarea>
+    <textarea id = "continut" name = "continut" ><%=continut%></textarea>
     <label for = "autori">autori:</label>
-    <textarea id = "autori" name = "autori" readonly = "!<%=autor%>"><%=autori%></textarea>
+    <textarea id = "autori" name = "autori" ><%=autori%></textarea>
     <label for = "tags">tag-uri:</label>
-    <textarea id = "tags" name = "tags" readonly = "!<%=autor%>"><%=tags%></textarea>
+    <textarea id = "tags" name = "tags" ><%=tags%></textarea>
     <% if(autor) { %>
       <button type = "submit">aplica modificarile</button>
     <% } %>

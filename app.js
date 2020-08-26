@@ -15,6 +15,7 @@ let homepageRouter = require('./routes/homepage');
 let loginRouter = require('./routes/login');
 let postariRouter = require('./routes/postari');
 let utilizatoriRouter = require('./routes/utilizatori');
+let apiRouter = require('./routes/api');
 
 let app = express();
 
@@ -34,6 +35,7 @@ app.use('/', homepageRouter);
 app.use('/login', loginRouter);
 app.use('/postari', postariRouter);
 app.use('/utilizatori', utilizatoriRouter);
+app.use('/api', apiRouter);
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({

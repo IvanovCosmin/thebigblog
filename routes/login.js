@@ -1,15 +1,19 @@
-//login
-
 let express = require('express');
 let router = express.Router();
 const DB = require('../database');
 const bcrypt = require('bcrypt');
 
 router.get('/', function(req, res, next) {
+  let numeUtilizator = req.session.numeUtilizator;
+  if(numeUtilizator)
+    res.redirect('/');
   res.render('login');
 })
 
 router.get('/contnou', function(req, res, next){
+  let numeUtilizator = req.session.numeUtilizator;
+  if(numeUtilizator)
+    res.redirect('/');
   res.render('cont nou');
 })
 
