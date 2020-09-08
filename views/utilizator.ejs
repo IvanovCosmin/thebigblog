@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head> 
+  </head>
+  <body>
+      <h1><%=postari %></h1>
+      <button>adauga postare</button>
+      <button>editeaza profilul</button>
+      <br>
+      <p>conturi care asteapta aprobrare:</p>
+      <br>
+      <p><%=inAsteptare%></p>
+      <form action = "/utilizatori/<%=numeUtilizator%>/aprobare" method = "POST">
+        <label for = "contAprobat">aproba contul:</label>
+        <input type = "text" name = "contAprobat" id = "contAprobat" placeholder="numele contului">
+        <button type = "submit">aproba</button>
+      </form>
+      <script>
+      </script>
+  </body>
+</html>

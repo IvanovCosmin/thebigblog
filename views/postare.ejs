@@ -1,19 +1,25 @@
-<!--postare noua-->
-
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel='stylesheet' href='/stylesheets/postarestyle.css' />
+  <head> 
   </head>
   <body>
-      <form action = /postare method="POST">
-        <label for = "titlu">Titlu:</label><br>  
-        <input type = "text" name = "titlu" placeholder = "Titlu..." id = "titlu"><br>
-        <label for = "descriere">Descriere:</label><br>
-        <input type = "text" name = "descriere" placeholder = "Descriere..." id = "descriere"><br>
-        <label for = "autor">Autor:</label><br>
-        <input type = "text" name = "autor" placeholder = "Autor..." id = "autor"><br><br>
-        <button type = "submit" id = "trimite">Trimite</button>
-      </form>
+    <form action = "/postari/<%=titluPostare%>/editeaza" method = "POST">
+    <label for =  "titlu">titlu:</label>
+    <textarea id = "titlu" name = "titlu" ><%=titlu%></textarea>
+    <label for = "continut">continut:</label>
+    <textarea id = "continut" name = "continut" ><%=continut%></textarea>
+    <label for = "autori">autori:</label>
+    <textarea id = "autori" name = "autori" ><%=autori%></textarea>
+    <label for = "tags">tag-uri:</label>
+    <textarea id = "tags" name = "tags" ><%=tags%></textarea>
+    <% if(autor) { %>
+      <button type = "submit">aplica modificarile</button>
+    <% } %>
+    </form>
+    <form action = "/postari/<%=titluPostare%>/sterge" method = "POST">
+      <% if(autor) { %>
+      <button type = "submit">sterge postarea</button>
+      <% } %>
+    </form>
   </body>
 </html>
