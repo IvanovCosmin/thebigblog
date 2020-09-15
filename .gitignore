@@ -4,3 +4,7 @@ npm-debug.log
 .env
 .DS_Store
 .code
+microservice_python/__pycache__
+microservice_python/venv
+microservice_python/.idea
+
