@@ -30,7 +30,7 @@ const DBObject = {
 
     _getLoginSchema: function () {
         if(this._loginInternals.schema === undefined) {
-            this._loginInternals.schema = new mongoose.Schema({numeUtilizator: 'string', parola: 'string', 'autor': 'bool'});
+            this._loginInternals.schema = new mongoose.Schema({numeUtilizator: 'string', parola: 'string', autor: 'bool'});
         }
         return this._loginInternals.schema;
     },

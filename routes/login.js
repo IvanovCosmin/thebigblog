@@ -25,7 +25,7 @@ router.post('/contnou',async function(req, res, next){
   res.render('aprobare');
 })
 
-//login
+
 router.post('/', function(req, res, next){
   let numeUtilizator = req.body.numeUtilizator;
   let parola = req.body.parola;
