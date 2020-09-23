@@ -12,12 +12,12 @@ router.get('/:titluPostare', function(req, res, next) {
       let continut = postare[0].continut;
       let autori = postare[0].autori;
       let tags = postare[0].tags;
-      let autor = true;
+      let esteAutorPostare = true;
       let numeUtilizator = req.session.numeUtilizator;
       if(!postare[0].autori.includes(numeUtilizator))
-        autor = false;
+        esteAutorPostare = false;
       res.render('postare', {titluPostare: titluPostare, titlu: titlu, continut: continut,
-      autori: autori, tags: tags, autor: autor});
+      autori: autori, tags: tags, esteAutorPostare: esteAutorPostare});
     }
   });
 });
