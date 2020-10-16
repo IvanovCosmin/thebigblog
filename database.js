@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const config = require("./config");
 
 const DBObject = {
-    dbInstance: mongoose.connect(config.CONNECTION_STRING),
+    dbInstance: mongoose.connect(config.CONNECTION_STRING, {useNewUrlParser: true}),
     
     _postareInternals: {
         schema: undefined,
