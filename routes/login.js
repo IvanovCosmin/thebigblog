@@ -3,37 +3,37 @@ let router = express.Router();
 const DB = require('../database');
 const bcrypt = require('bcrypt');
 
-router.get('/', function(req, res, next) {
+router.get('/', function (req, res, next) {
   let numeUtilizator = req.session.numeUtilizator;
-  if(numeUtilizator)
+  if (numeUtilizator)
     res.redirect('/');
   res.render('login');
 })
 
-router.get('/contnou', function(req, res, next){
+router.get('/contnou', function (req, res, next) {
   let numeUtilizator = req.session.numeUtilizator;
-  if(numeUtilizator)
+  if (numeUtilizator)
     res.redirect('/');
   res.render('cont nou');
 })
 
-router.post('/contnou',async function(req, res, next){
+router.post('/contnou', async function (req, res, next) {
   let numeUtilizator = req.body.numeUtilizator;
   let parola = req.body.parola;
   parola = await bcrypt.hash(parola, 10);
-  DB.getLoginModel().create({numeUtilizator: numeUtilizator, parola: parola, autor: false}, function(err, utilizatorAdaugat){});
+  DB.getLoginModel().create({ numeUtilizator: numeUtilizator, parola: parola, autor: false }, function (err, utilizatorAdaugat) { });
   res.render('aprobare');
 })
 
 
-router.post('/', function(req, res, next){
+router.post('/', function (req, res, next) {
   let numeUtilizator = req.body.numeUtilizator;
   let parola = req.body.parola;
-  DB.getLoginModel().find({numeUtilizator: numeUtilizator}, async function(err, numeUtilizatorLogat){
-    if(numeUtilizatorLogat.length === 0)
+  DB.getLoginModel().find({ numeUtilizator: numeUtilizator }, async function (err, numeUtilizatorLogat) {
+    if (numeUtilizatorLogat.length === 0)
       console.log("logare esuata");
     else
-      if(await bcrypt.compare(parola, numeUtilizatorLogat[0].parola) && numeUtilizatorLogat[0].autor === true){
+      if (await bcrypt.compare(parola, numeUtilizatorLogat[0].parola) && numeUtilizatorLogat[0].autor === true) {
         req.session.numeUtilizator = numeUtilizator;
         res.redirect('/');
       }

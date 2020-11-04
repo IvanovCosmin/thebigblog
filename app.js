@@ -22,7 +22,7 @@ let app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({name:"sid", resave: false, saveUninitialized: false, secret: secret, cookie: {maxAge: 1000 * 60 * 60 *2, sameSite: true, secure: false}}))
+app.use(session({ name: "sid", resave: false, saveUninitialized: false, secret: secret, cookie: { maxAge: 1000 * 60 * 60 * 2, sameSite: true, secure: false } }))
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -37,10 +37,10 @@ app.use('/utilizatori', utilizatoriRouter);
 app.use('/api', apiRouter);
 
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // catch 404 and forward to error handler
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   next(createError(404));
 });
 
