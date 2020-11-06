@@ -10,7 +10,7 @@ router.get('/postari', function (req, res, next) {
   });
 });
 
-router.get('/:numeUtilizator/inasteptare', function (req, res, next) {
+router.get('/utilizatori/:numeUtilizator/inasteptare', function (req, res, next) {
   let numeUtilizator = req.params.numeUtilizator;
   DB.getLoginModel().find({ numeUtilizator: numeUtilizator }, function (err, utilizator) {
     if (utilizator.length === 0)
@@ -31,7 +31,7 @@ router.get('/:numeUtilizator/inasteptare', function (req, res, next) {
   })
 })
 
-router.get('/:numeUtilizator/postari', function (req, res, next) {
+router.get('/utilizatori/:numeUtilizator/postari', function (req, res, next) {
   let numeUtilizator = req.params.numeUtilizator;
   DB.getLoginModel().find({ numeUtilizator: numeUtilizator }, function (err, utilizator) {
     if (utilizator.length === 0)
