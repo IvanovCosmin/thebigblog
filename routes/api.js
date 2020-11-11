@@ -1,8 +1,9 @@
 let express = require('express');
 let router = express.Router();
+let cors = require('cors')
 const DB = require('../database');
 
-router.get('/postari', function (req, res, next) {
+router.get('/postari', cors(), function (req, res, next) {
   let bazaDeDate;
   DB.getPostareModel().find({}, function (err, postari) {
     bazaDeDate = postari;
@@ -10,7 +11,7 @@ router.get('/postari', function (req, res, next) {
   });
 });
 
-router.get('/utilizatori/:numeUtilizator/inasteptare', function (req, res, next) {
+router.get('/utilizatori/:numeUtilizator/inasteptare', cors(), function (req, res, next) {
   let numeUtilizator = req.params.numeUtilizator;
   DB.getLoginModel().find({ numeUtilizator: numeUtilizator }, function (err, utilizator) {
     if (utilizator.length === 0)
@@ -31,7 +32,7 @@ router.get('/utilizatori/:numeUtilizator/inasteptare', function (req, res, next)
   })
 })
 
-router.get('/utilizatori/:numeUtilizator/postari', function (req, res, next) {
+router.get('/utilizatori/:numeUtilizator/postari', cors(), function (req, res, next) {
   let numeUtilizator = req.params.numeUtilizator;
   DB.getLoginModel().find({ numeUtilizator: numeUtilizator }, function (err, utilizator) {
     if (utilizator.length === 0)
