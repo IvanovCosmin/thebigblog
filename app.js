@@ -5,6 +5,7 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
 let session = require('express-session');
+let cors = require('cors');
 
 let config = require('./config');
 
@@ -17,6 +18,8 @@ let utilizatoriRouter = require('./routes/utilizatori');
 let apiRouter = require('./routes/api');
 
 let app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
