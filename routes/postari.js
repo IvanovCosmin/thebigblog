@@ -2,24 +2,30 @@ let express = require('express');
 let router = express.Router();
 const DB = require('../database');
 
+router.get('/', function (req, res, next) {
+  let bazaDeDate;
+  DB.getPostareModel().find({}, function (err, postari) {
+    bazaDeDate = postari;
+    res.send(bazaDeDate);
+  });
+});
+
 router.get('/:titluPostare', function (req, res, next) {
   let titluPostare = req.params.titluPostare;
-  DB.getPostareModel().find({ titlu: titluPostare }, function (err, postare) {
-    if (postare.length === 0)
+  DB.getPostareModel().find({ titlu: titluPostare }, function (err, postare_temp) {
+    if (postare_temp.length === 0)
       res.sendStatus(404);
     else {
-      let titlu = postare[0].titlu;
-      let continut = postare[0].continut;
-      let autori = postare[0].autori;
-      let tags = postare[0].tags;
+      let titlu = postare_temp[0].titlu;
+      let continut = postare_temp[0].continut;
+      let autori = postare_temp[0].autori;
+      let tags = postare_temp[0].tags;
       let esteAutorPostare = true;
       let numeUtilizator = req.session.numeUtilizator;
-      if (!postare[0].autori.includes(numeUtilizator))
+      if (!postare_temp[0].autori.includes(numeUtilizator))
         esteAutorPostare = false;
-      res.render('postare', {
-        titluPostare: titluPostare, titlu: titlu, continut: continut,
-        autori: autori, tags: tags, esteAutorPostare: esteAutorPostare
-      });
+      let postare = { titlu, continut, autori, tags, esteAutorPostare };
+      res.send(postare);
     }
   });
 });

@@ -5,7 +5,6 @@ let cookieParser = require('cookie-parser');
 let logger = require('morgan');
 let bodyParser = require('body-parser');
 let session = require('express-session');
-let cors = require('cors');
 
 let config = require('./config');
 
@@ -15,17 +14,15 @@ let homepageRouter = require('./routes/homepage');
 let loginRouter = require('./routes/login');
 let postariRouter = require('./routes/postari');
 let utilizatoriRouter = require('./routes/utilizatori');
-let apiRouter = require('./routes/api');
 
 let app = express();
 
-app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
-app.use(session({ name: "sid", resave: false, saveUninitialized: false, secret: secret, cookie: { maxAge: 1000 * 60 * 60 * 2, sameSite: true, secure: false } }))
+app.use(session({ name: "sid", resave: false, saveUninitialized: false, secret: secret, cookie: { sameSite: false, secure: false, httpOnly: false, signed: false } }))
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,10 +31,9 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', homepageRouter);
-app.use('/login', loginRouter);
-app.use('/postari', postariRouter);
-app.use('/utilizatori', utilizatoriRouter);
-app.use('/api', apiRouter);
+app.use('/api/login', loginRouter);
+app.use('/api/postari', postariRouter);
+app.use('/api/utilizatori', utilizatoriRouter);
 
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }));

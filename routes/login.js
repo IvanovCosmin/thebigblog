@@ -35,7 +35,7 @@ router.post('/', function (req, res, next) {
     else
       if (await bcrypt.compare(parola, numeUtilizatorLogat[0].parola) && numeUtilizatorLogat[0].autor === true) {
         req.session.numeUtilizator = numeUtilizator;
-        res.redirect('/');
+        res.send("ok");
       }
       else
         console.log("logare esuata");

@@ -13,7 +13,7 @@ router.get('/', function (req, res, next) {
       logat = true;
     else
       logat = false;
-    res.render('homepage', { postari: bazaDeDate, logat: logat });
+    res.render('homepage');
   });
 });
 

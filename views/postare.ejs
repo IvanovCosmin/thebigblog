@@ -1,25 +1,24 @@
 <!DOCTYPE html>
 <html>
-  <head> 
-  </head>
-  <body>
-    <form action = "/postari/<%=titluPostare%>/editeaza" method = "POST">
-    <label for =  "titlu">titlu:</label>
-    <textarea id = "titlu" name = "titlu" ><%=titlu%></textarea>
-    <label for = "continut">continut:</label>
-    <textarea id = "continut" name = "continut" ><%=continut%></textarea>
-    <label for = "autori">autori:</label>
-    <textarea id = "autori" name = "autori" ><%=autori%></textarea>
-    <label for = "tags">tag-uri:</label>
-    <textarea id = "tags" name = "tags" ><%=tags%></textarea>
-    <% if(esteAutorPostare) { %>
-      <button type = "submit">aplica modificarile</button>
-    <% } %>
-    </form>
-    <form action = "/postari/<%=titluPostare%>/sterge" method = "POST">
-      <% if(esteAutorPostare) { %>
-      <button type = "submit">sterge postarea</button>
-      <% } %>
-    </form>
-  </body>
+
+<head>
+</head>
+
+<body>
+  <form action="/postari/<%=titluPostare%>/editeaza" method="POST">
+    <label for="titlu">titlu:</label>
+    <textarea id="titlu" name="titlu"><%=titlu%></textarea>
+    <label for="continut">continut:</label>
+    <textarea id="continut" name="continut"><%=continut%></textarea>
+    <label for="autori">autori:</label>
+    <textarea id="autori" name="autori"><%=autori%></textarea>
+    <label for="tags">tag-uri:</label>
+    <textarea id="tags" name="tags"><%=tags%></textarea>
+    <button type="submit">aplica modificarile</button>
+  </form>
+  <form action="/postari/<%=titluPostare%>/sterge" method="POST">
+    <button type="submit">sterge postarea</button>
+  </form>
+</body>
+
 </html>
